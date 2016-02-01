@@ -3,7 +3,7 @@ CC     := g++
 CFLAGS := -std=c++11 -Wall -fpic -O3
 ODIR   := obj
 LDIR   := lib
-LIBS   := -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+LIBS   := -L../Hum2D/lib/ -lhum2d -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 SDIR   := src/Hum2D/SFML
 INC    := -I../Hum2D/include -Iinclude/Hum2D/SFML
 

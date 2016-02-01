@@ -5,6 +5,7 @@
 namespace h2d
 {
 class Time;
+struct SpriteAnimation;
 class AnimatedSprite : public Drawable
 {
 public:
