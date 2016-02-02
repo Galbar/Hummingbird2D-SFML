@@ -22,11 +22,12 @@ void AnimatedSprite::setSpriteAnimation(const SpriteAnimation* animation)
     p_sprite.setTexture(*animation->texture);
     *p_time = Time::nanoseconds(0);
     p_frame_index = 0;
-    int top, left, idx;
+    int top, left, idx, sheet_width;
+    sheet_width = p_animation->texture->getSize().x - p_animation->offset_x;
     idx = p_animation->frame_order[p_frame_index];
-    left = p_animation->offset_x + idx * (p_animation->margin_x + p_animation->width);
-    top = p_animation->offset_y + p_animation->height * (left / p_animation->texture->getSize().x);
-    left = left % p_animation->texture->getSize().x;
+    left = idx * (p_animation->margin_x + p_animation->width);
+    top = p_animation->offset_y + (p_animation->margin_y + p_animation->height) * (left / sheet_width);
+    left = (left % sheet_width) + p_animation->offset_x;
 
     p_sprite.setTextureRect(sf::IntRect(left, top, p_animation->width, p_animation->height));
 }
@@ -59,11 +60,12 @@ sf::Drawable* AnimatedSprite::sfDrawable()
                 }
             }
         }
-        int top, left, idx;
+        int top, left, idx, sheet_width;
+        sheet_width = p_animation->texture->getSize().x - p_animation->offset_x;
         idx = p_animation->frame_order[p_frame_index];
-        left = p_animation->offset_x + idx * (p_animation->margin_x + p_animation->width);
-        top = p_animation->offset_y + p_animation->height * (left / p_animation->texture->getSize().x);
-        left = left % p_animation->texture->getSize().x;
+        left = idx * (p_animation->margin_x + p_animation->width);
+        top = p_animation->offset_y + (p_animation->margin_y + p_animation->height) * (left / sheet_width);
+        left = (left % sheet_width) + p_animation->offset_x;
 
         p_sprite.setTextureRect(sf::IntRect(left, top, p_animation->width, p_animation->height));
     }
@@ -109,6 +111,12 @@ AnimatedSprite::Status AnimatedSprite::status() const
 unsigned int AnimatedSprite::frameIndex() const
 {
     return p_frame_index;
+}
+
+void AnimatedSprite::frameIndex(unsigned int frame_index)
+{
+    p_frame_index = frame_index % p_animation->frame_time.size();
+    *p_time -= *p_time;
 }
 
 void AnimatedSprite::setLooping(bool looping)

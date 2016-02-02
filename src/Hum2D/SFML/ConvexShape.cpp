@@ -2,7 +2,6 @@
 using namespace h2d;
 
 ConvexShape::ConvexShape(const std::vector<sf::Vector2f>& points, const sf::Color& fill_color):
-h2d::Drawable(),
 p_convex_shape(points.size())
 {
     for (unsigned int i = 0; i < points.size(); ++i)

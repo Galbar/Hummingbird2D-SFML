@@ -23,6 +23,7 @@ public:
     void stop();
     Status status() const;
     unsigned int frameIndex() const;
+    void frameIndex(unsigned int frame_index);
 
     void setLooping(bool looping);
     bool isLooping() const;

@@ -55,31 +55,6 @@ sf::Transformable* Drawable::sfTransformable()
     return nullptr;
 }
 
-//sf::Sprite* Drawable::animatedSpriteUpdate()
-//{
-//    return nullptr;
-//}
-
-//sf::Shape* Drawable::shape()
-//{
-//    return nullptr;
-//}
-
-//sf::Sprite* Drawable::sprite()
-//{
-//    return nullptr;
-//}
-
-//sf::Text* Drawable::text()
-//{
-//    return nullptr;
-//}
-
-//sf::VertexArray* Drawable::vertexArray()
-//{
-//    return nullptr;
-//}
-
 const Transformation& Drawable::transform() const
 {
     return *p_transform;

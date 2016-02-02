@@ -2,10 +2,9 @@
 using namespace h2d;
 
 Circle::Circle(double radius, const sf::Color& fill_color):
-h2d::Drawable(),
 p_circle(radius)
 {
-p_circle.setFillColor(fill_color);
+    p_circle.setFillColor(fill_color);
 }
 
 sf::Drawable* Circle::sfDrawable()

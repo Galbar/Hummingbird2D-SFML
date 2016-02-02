@@ -2,7 +2,6 @@
 using namespace h2d;
 
 Rectangle::Rectangle(const sf::Vector2f& size, const sf::Color& fill_color):
-h2d::Drawable(),
 p_rectangle(size)
 {
 p_rectangle.setFillColor(fill_color);
