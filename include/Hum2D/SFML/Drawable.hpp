@@ -6,8 +6,6 @@
 namespace h2d
 {
 class Transformation;
-class SpriteAnimation;
-class Time;
 class Drawable : public Behaviour
 {
 public:
