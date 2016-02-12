@@ -4,7 +4,7 @@
 #include "InputHandler.hpp"
 #include "TextureManager.hpp"
 #include "SpriteAnimation.hpp"
-#include "SoundBufferManager.hpp"
+#include "SoundManager.hpp"
 #include "MusicManager.hpp"
 #include "Drawable.hpp"
 using namespace h2d;
@@ -18,7 +18,7 @@ p_window_title(window_title)
     p_texture_manager = new TextureManager;
     p_sprite_animation_manager = new SpriteAnimationManager;
     p_music_manager = new MusicManager;
-    p_soundbuff_manager = new SoundBufferManager;
+    p_sound_manager = new SoundManager;
 }
 
 SFMLPlugin::~SFMLPlugin()
@@ -26,7 +26,7 @@ SFMLPlugin::~SFMLPlugin()
     delete p_input;
     delete p_texture_manager;
     delete p_music_manager;
-    delete p_soundbuff_manager;
+    delete p_sound_manager;
     delete p_sprite_animation_manager;
 }
 
@@ -47,6 +47,7 @@ void SFMLPlugin::gameStart()
 
 void SFMLPlugin::preFixedUpdate()
 {
+    p_sound_manager->clearSounds();
     p_input->update();
     sf::Event event;
     while (p_window->pollEvent(event))
@@ -124,6 +125,8 @@ void SFMLPlugin::postUpdate()
 void SFMLPlugin::gameEnd()
 {
     p_window->close();
+    delete p_window;
+    p_window = nullptr;
 }
 
 const std::list<sf::Event> SFMLPlugin::getEvents() const
@@ -161,14 +164,14 @@ const SpriteAnimationManager& SFMLPlugin::spriteAnimations() const
     return *p_sprite_animation_manager;
 }
 
-SoundBufferManager& SFMLPlugin::sounds()
+SoundManager& SFMLPlugin::sounds()
 {
-    return *p_soundbuff_manager;
+    return *p_sound_manager;
 }
 
-const SoundBufferManager& SFMLPlugin::sounds() const
+const SoundManager& SFMLPlugin::sounds() const
 {
-    return *p_soundbuff_manager;
+    return *p_sound_manager;
 }
 
 MusicManager& SFMLPlugin::music()

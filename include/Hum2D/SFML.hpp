@@ -8,7 +8,7 @@
 #include "SFML/MusicManager.hpp"
 #include "SFML/Rectangle.hpp"
 #include "SFML/SFMLPlugin.hpp"
-#include "SFML/SoundBufferManager.hpp"
+#include "SFML/SoundManager.hpp"
 #include "SFML/Sprite.hpp"
 #include "SFML/SpriteAnimation.hpp"
 #include "SFML/Text.hpp"

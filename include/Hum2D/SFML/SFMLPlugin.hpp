@@ -11,7 +11,7 @@ namespace h2d
 {
 class TextureManager;
 class SpriteAnimationManager;
-class SoundBufferManager;
+class SoundManager;
 class MusicManager;
 class InputHandler;
 class Drawable;
@@ -36,8 +36,8 @@ public:
     const SpriteAnimationManager& spriteAnimations() const;
     TextureManager& textures();
     const TextureManager& textures() const;
-    SoundBufferManager& sounds();
-    const SoundBufferManager& sounds() const;
+    SoundManager& sounds();
+    const SoundManager& sounds() const;
     MusicManager& music();
     const MusicManager& music() const;
 
@@ -56,7 +56,7 @@ private:
     TextureManager* p_texture_manager;
     SpriteAnimationManager* p_sprite_animation_manager;
     MusicManager* p_music_manager;
-    SoundBufferManager* p_soundbuff_manager;
+    SoundManager* p_sound_manager;
 };
 }
 #endif
