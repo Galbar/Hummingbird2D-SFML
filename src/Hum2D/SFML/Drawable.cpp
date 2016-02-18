@@ -1,20 +1,14 @@
-#include "Hum2D/Game.hpp"
-#include "Hum2D/Actor.hpp"
-#include "Hum2D/Transformation.hpp"
 #include "Drawable.hpp"
 #include "SFMLPlugin.hpp"
 using namespace h2d;
 
 Drawable::Drawable():
 p_is_enabled(true),
-p_transform(new Transformation),
 p_shader(nullptr)
 {}
 
 Drawable::~Drawable()
-{
-    delete p_transform;
-}
+{}
 
 void Drawable::init()
 {
@@ -57,12 +51,12 @@ sf::Transformable* Drawable::sfTransformable()
 
 const Transformation& Drawable::transform() const
 {
-    return *p_transform;
+    return p_transform;
 }
 
 Transformation& Drawable::transform()
 {
-    return *p_transform;
+    return p_transform;
 }
 
 const sf::Shader* Drawable::shader() const

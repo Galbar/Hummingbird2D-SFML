@@ -1,5 +1,6 @@
 #ifndef H2D_ANIMATED_SPRITE_HPP
 #define H2D_ANIMATED_SPRITE_HPP
+#include "Hum2D/Hum2D.hpp"
 #include "Drawable.hpp"
 
 namespace h2d
@@ -36,7 +37,7 @@ private:
     bool p_loop;
     unsigned int p_frame_index;
     const SpriteAnimation* p_animation;
-    Time* p_time;
+    Time p_time;
     sf::Sprite p_sprite;
 };
 }

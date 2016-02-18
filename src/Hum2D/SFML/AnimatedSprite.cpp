@@ -1,26 +1,22 @@
-#include "Hum2D/Hum2D.hpp"
 #include "SpriteAnimation.hpp"
 #include "AnimatedSprite.hpp"
 using namespace h2d;
 
 AnimatedSprite::AnimatedSprite(const SpriteAnimation* animation):
-p_loop(true),
-p_time(new Time)
+p_loop(true)
 {
     setSpriteAnimation(animation);
     p_status = PLAYING;
 }
 
 AnimatedSprite::~AnimatedSprite()
-{
-    delete p_time;
-}
+{}
 
 void AnimatedSprite::setSpriteAnimation(const SpriteAnimation* animation)
 {
     p_animation = animation;
     p_sprite.setTexture(*animation->texture);
-    *p_time = Time::nanoseconds(0);
+    p_time = Time::nanoseconds(0);
     p_frame_index = 0;
     int top, left, idx, sheet_width;
     sheet_width = p_animation->texture->getSize().x - p_animation->offset_x;
@@ -41,11 +37,10 @@ sf::Drawable* AnimatedSprite::sfDrawable()
 {
     if (p_status == PLAYING)
     {
-        Time& time = *p_time;
-        time += actor().game().deltaTime();
-        while (time > p_animation->frame_time[p_frame_index])
+        p_time += actor().game().deltaTime();
+        while (p_time > p_animation->frame_time[p_frame_index])
         {
-            time -= p_animation->frame_time[p_frame_index];
+            p_time -= p_animation->frame_time[p_frame_index];
             ++p_frame_index;
             if (p_frame_index == p_animation->frame_time.size())
             {
@@ -116,7 +111,7 @@ unsigned int AnimatedSprite::frameIndex() const
 void AnimatedSprite::frameIndex(unsigned int frame_index)
 {
     p_frame_index = frame_index % p_animation->frame_time.size();
-    *p_time -= *p_time;
+    p_time -= p_time;
 }
 
 void AnimatedSprite::setLooping(bool looping)

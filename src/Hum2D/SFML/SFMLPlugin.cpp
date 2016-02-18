@@ -1,11 +1,6 @@
 #include <map>
 #include "Hum2D/Hum2D.hpp"
 #include "SFMLPlugin.hpp"
-#include "InputHandler.hpp"
-#include "TextureManager.hpp"
-#include "SpriteAnimation.hpp"
-#include "SoundManager.hpp"
-#include "MusicManager.hpp"
 #include "Drawable.hpp"
 using namespace h2d;
 
@@ -13,22 +8,10 @@ SFMLPlugin::SFMLPlugin(int window_width, int window_height, std::string window_t
 p_window_width(window_width),
 p_window_height(window_height),
 p_window_title(window_title)
-{
-    p_input = new InputHandler;
-    p_texture_manager = new TextureManager;
-    p_sprite_animation_manager = new SpriteAnimationManager;
-    p_music_manager = new MusicManager;
-    p_sound_manager = new SoundManager;
-}
+{}
 
 SFMLPlugin::~SFMLPlugin()
-{
-    delete p_input;
-    delete p_texture_manager;
-    delete p_music_manager;
-    delete p_sound_manager;
-    delete p_sprite_animation_manager;
-}
+{}
 
 sf::RenderWindow& SFMLPlugin::window()
 {
@@ -47,8 +30,8 @@ void SFMLPlugin::gameStart()
 
 void SFMLPlugin::preFixedUpdate()
 {
-    p_sound_manager->clearSounds();
-    p_input->update();
+    p_sound_manager.clearSounds();
+    p_input.update();
     sf::Event event;
     while (p_window->pollEvent(event))
     {
@@ -57,7 +40,7 @@ void SFMLPlugin::preFixedUpdate()
             p_window->close();
             game().setRunning(false);
         }
-        p_input->handleEvent(event);
+        p_input.handleEvent(event);
         p_event_list.push_back(event);
     }
 }
@@ -103,9 +86,7 @@ void SFMLPlugin::postUpdate()
                 delete actor_transform;
             }
         }
-        draw_order.insert(
-            std::pair<double, std::pair<const sf::Drawable*, const sf::Shader*>>(
-                drawable_transform.z, std::pair<const sf::Drawable*, const sf::Shader*>(sf_drawable, drawable->shader())));
+        draw_order.insert(std::make_pair(drawable_transform.z, std::make_pair(sf_drawable, drawable->shader())));
     }
     for (auto it = draw_order.begin(); it != draw_order.end(); ++it)
     {
@@ -129,59 +110,59 @@ void SFMLPlugin::gameEnd()
     p_window = nullptr;
 }
 
-const std::list<sf::Event> SFMLPlugin::getEvents() const
+const std::vector<sf::Event> SFMLPlugin::getEvents() const
 {
     return p_event_list;
 }
 
 const InputHandler& SFMLPlugin::input() const
 {
-    return *p_input;
+    return p_input;
 }
 
 InputHandler& SFMLPlugin::input()
 {
-    return *p_input;
+    return p_input;
 }
 
 TextureManager& SFMLPlugin::textures()
 {
-    return *p_texture_manager;
+    return p_texture_manager;
 }
 
 const TextureManager& SFMLPlugin::textures() const
 {
-    return *p_texture_manager;
+    return p_texture_manager;
 }
 
 SpriteAnimationManager& SFMLPlugin::spriteAnimations()
 {
-    return *p_sprite_animation_manager;
+    return p_sprite_animation_manager;
 }
 
 const SpriteAnimationManager& SFMLPlugin::spriteAnimations() const
 {
-    return *p_sprite_animation_manager;
+    return p_sprite_animation_manager;
 }
 
 SoundManager& SFMLPlugin::sounds()
 {
-    return *p_sound_manager;
+    return p_sound_manager;
 }
 
 const SoundManager& SFMLPlugin::sounds() const
 {
-    return *p_sound_manager;
+    return p_sound_manager;
 }
 
 MusicManager& SFMLPlugin::music()
 {
-    return *p_music_manager;
+    return p_music_manager;
 }
 
 const MusicManager& SFMLPlugin::music() const
 {
-    return *p_music_manager;
+    return p_music_manager;
 }
 
 void SFMLPlugin::addDrawable(Drawable* drawable)

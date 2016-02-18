@@ -1,11 +1,10 @@
 #ifndef H2D_DRAWABLE_HPP
 #define H2D_DRAWABLE_HPP
 #include <SFML/Graphics.hpp>
-#include "Hum2D/Behaviour.hpp"
+#include "Hum2D/Hum2D.hpp"
 
 namespace h2d
 {
-class Transformation;
 class Drawable : public Behaviour
 {
 public:
@@ -29,7 +28,7 @@ public:
 
 private:
     bool p_is_enabled;
-    Transformation* p_transform;
+    Transformation p_transform;
     const sf::Shader* p_shader;
 };
 }

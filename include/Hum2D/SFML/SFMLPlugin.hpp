@@ -1,19 +1,19 @@
 #ifndef SFML_PLUGIN_HPP
 #define SFML_PLUGIN_HPP
 #include <string>
-#include <list>
-#include <set>
+#include <vector>
+#include <unordered_set>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "Hum2D/Plugin.hpp"
+#include "TextureManager.hpp"
+#include "SpriteAnimation.hpp"
+#include "SoundManager.hpp"
+#include "MusicManager.hpp"
+#include "InputHandler.hpp"
 
 namespace h2d
 {
-class TextureManager;
-class SpriteAnimationManager;
-class SoundManager;
-class MusicManager;
-class InputHandler;
 class Drawable;
 class Kinematic;
 class SFMLPlugin : public Plugin
@@ -26,7 +26,7 @@ public:
     void postFixedUpdate();
     void postUpdate();
     void gameEnd();
-    const std::list<sf::Event> getEvents() const;
+    const std::vector<sf::Event> getEvents() const;
     void draw(sf::Drawable* drawable, double z_index = 0.0);
     sf::RenderWindow& window();
     const sf::RenderWindow& window() const;
@@ -49,14 +49,14 @@ private:
     int p_window_height;
     std::string p_window_title;
     sf::RenderWindow* p_window;
-    std::list<sf::Event> p_event_list;
-    std::set<Drawable*> p_drawable_set;
+    std::vector<sf::Event> p_event_list;
+    std::unordered_set<Drawable*> p_drawable_set;
     std::unordered_map<Drawable*, const Kinematic*> p_drawable_kinematic;
-    InputHandler* p_input;
-    TextureManager* p_texture_manager;
-    SpriteAnimationManager* p_sprite_animation_manager;
-    MusicManager* p_music_manager;
-    SoundManager* p_sound_manager;
+    InputHandler p_input;
+    TextureManager p_texture_manager;
+    SpriteAnimationManager p_sprite_animation_manager;
+    MusicManager p_music_manager;
+    SoundManager p_sound_manager;
 };
 }
 #endif
