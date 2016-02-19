@@ -9,7 +9,7 @@ class Drawable : public Behaviour
 {
 public:
     Drawable();
-    ~Drawable();
+    virtual ~Drawable();
 
     virtual void init() override;
     virtual void onDestroy() override;

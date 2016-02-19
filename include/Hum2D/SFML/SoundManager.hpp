@@ -15,7 +15,7 @@ class SoundManager : public ResourceManager<sf::SoundBuffer>
 {
 public:
     SoundManager();
-    ~SoundManager();
+    virtual ~SoundManager();
     Sound_t play(const std::string& name, int volume, bool loop = false, bool relative_to_listener = false, const sf::Vector3f& position = sf::Vector3f());
     sf::Sound* get(SoundId sound_id);
     const sf::Sound* get(SoundId sound_id) const;

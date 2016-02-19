@@ -12,7 +12,7 @@ class AnimatedSprite : public Drawable
 public:
     enum Status { PLAYING, PAUSED, STOPPED };
     AnimatedSprite(const SpriteAnimation* animation);
-    ~AnimatedSprite();
+    virtual ~AnimatedSprite();
     const SpriteAnimation* spriteAnimation() const;
     void setSpriteAnimation(const SpriteAnimation* animation);
     sf::Drawable* sfDrawable() override;

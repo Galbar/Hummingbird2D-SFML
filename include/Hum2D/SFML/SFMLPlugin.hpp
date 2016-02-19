@@ -20,7 +20,7 @@ class SFMLPlugin : public Plugin
 {
 public:
     SFMLPlugin(int window_width, int window_height, std::string window_title);
-    ~SFMLPlugin();
+    virtual ~SFMLPlugin();
     void gameStart();
     void preFixedUpdate();
     void postFixedUpdate();
