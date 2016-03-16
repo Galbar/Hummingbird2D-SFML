@@ -13,7 +13,7 @@ public:
     sf::RectangleShape& rectangle();
     const sf::RectangleShape& rectangle() const;
 
-    static const char* behaviourName();
+    static const char* behaviorName();
 
     private:
     sf::RectangleShape p_rectangle;

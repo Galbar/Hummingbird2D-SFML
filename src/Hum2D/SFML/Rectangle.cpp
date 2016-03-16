@@ -27,7 +27,7 @@ const sf::RectangleShape& Rectangle::rectangle() const
     return p_rectangle;
 }
 
-const char* Rectangle::behaviourName()
+const char* Rectangle::behaviorName()
 {
     return "h2d::Rectangle";
 }

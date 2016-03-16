@@ -27,7 +27,7 @@ const sf::CircleShape& Circle::circle() const
     return p_circle;
 }
 
-const char* Circle::behaviourName()
+const char* Circle::behaviorName()
 {
     return "h2d::Circle";
 }

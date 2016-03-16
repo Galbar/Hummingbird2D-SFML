@@ -13,7 +13,7 @@ public:
     sf::CircleShape& circle();
     const sf::CircleShape& circle() const;
 
-    static const char* behaviourName();
+    static const char* behaviorName();
 
 private:
     sf::CircleShape p_circle;

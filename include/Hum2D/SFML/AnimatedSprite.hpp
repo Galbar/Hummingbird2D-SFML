@@ -30,7 +30,7 @@ public:
     void setLooping(bool looping);
     bool isLooping() const;
 
-    static const char* behaviourName();
+    static const char* behaviorName();
 
 private:
     Status p_status;

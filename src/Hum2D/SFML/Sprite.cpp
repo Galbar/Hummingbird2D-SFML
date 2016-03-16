@@ -29,7 +29,7 @@ const sf::Sprite& Sprite::sprite() const
     return p_sprite;
 }
 
-const char* Sprite::behaviourName()
+const char* Sprite::behaviorName()
 {
     return "h2d::Sprite";
 }

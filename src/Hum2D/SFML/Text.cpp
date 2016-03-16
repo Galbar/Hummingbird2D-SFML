@@ -25,7 +25,7 @@ const sf::Text& Text::text() const
     return p_text;
 }
 
-const char* Text::behaviourName()
+const char* Text::behaviorName()
 {
     return "h2d::Text";
 }

@@ -31,7 +31,7 @@ const sf::ConvexShape& ConvexShape::convexShape() const
     return p_convex_shape;
 }
 
-const char* ConvexShape::behaviourName()
+const char* ConvexShape::behaviorName()
 {
     return "h2d::ConvexShape";
 }

@@ -170,9 +170,9 @@ void SFMLPlugin::addDrawable(Drawable* drawable)
     p_drawable_set.insert(drawable);
     try
     {
-        p_drawable_kinematic[drawable] = drawable->actor().getBehaviour<Kinematic>();
+        p_drawable_kinematic[drawable] = drawable->actor().getBehavior<Kinematic>();
     }
-    catch (exception::BehaviourNotFound e)
+    catch (exception::BehaviorNotFound e)
     {
         p_drawable_kinematic[drawable] = nullptr;
     }

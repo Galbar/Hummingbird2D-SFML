@@ -5,7 +5,7 @@
 
 namespace h2d
 {
-class Drawable : public Behaviour
+class Drawable : public Behavior
 {
 public:
     Drawable();

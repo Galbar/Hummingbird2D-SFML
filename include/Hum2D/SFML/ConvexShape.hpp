@@ -14,7 +14,7 @@ public:
     sf::ConvexShape& convexShape();
     const sf::ConvexShape& convexShape() const;
 
-    static const char* behaviourName();
+    static const char* behaviorName();
 
     private:
     sf::ConvexShape p_convex_shape;

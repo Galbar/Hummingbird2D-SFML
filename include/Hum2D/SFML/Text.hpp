@@ -13,7 +13,7 @@ public:
     sf::Text& text();
     const sf::Text& text() const;
 
-    static const char* behaviourName();
+    static const char* behaviorName();
 
 private:
     sf::Text p_text;
